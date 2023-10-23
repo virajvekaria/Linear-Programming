@@ -2,7 +2,7 @@ import streamlit as st
 import pulp as lp
 
 def linear_programming_demo():
-    st.title("Linear Programming Demo")
+    st.title("Linear Optimizer")
 
     # User input for the number of variables
     num_variables = st.number_input("Number of Variables", min_value=1, value=2, step=1)
@@ -40,7 +40,6 @@ def linear_programming_demo():
         key = f"const_{i}_rhs"  # Generate a unique key for the RHS input
         constraint_rhs = st.number_input("Right-Hand Side (RHS)", key=key, value=1.0, step=0.1)
 
-        # Define the constraints (e.g., 2x + y <= 10)
         constraint = lp.lpSum(constraint_coeffs[var] * var for var in variables) <= constraint_rhs
         model += constraint
 
